@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>INST377 - Lab 4</title>
+        <style>
+            body{
+                background-color:lightblue;
+            }
+            .mainbody{
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+                width: 70%;
+            }
+            .section{
+                background-color:indigo;
+                align-items: center;
+                padding: 15px;
+                border: 2px solid white;
+                border-radius: 10px;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="header">INST377 - Lab 4</h1>
+
+        <div class="mainbody">
+            <div class="section">
+                <form id="alert">
+                    <label for="name">Name: </label>
+                    <input type="text" id="name" required>
+                    <button type="button" onclick="alertName()">Alert Me!</button>
+                </form>
+            </div>
+    
+            <div class="section">
+                <button id="btnColor" onclick="changeColor()">Change Color</button>
+            </div>
+    
+            <div class="section">
+                <form id="text">
+                    <label for="textinput">Text Tester: </label>
+                    <input type="text" id="textinput">
+                    <button type="button" onclick="validateText()">Validate Text</button>
+                </form>
+            </div>
+    
+            <div class="section">
+                <button onclick="addText()">Add Text</button>
+            </div>
+        </div>
+
+        <script>
+            function alertName(){
+                let name = document.getElementById('name').value;
+                if(name){
+                    alert("Hi " + name + "!");
+                }
+            }
+
+            function changeColor(){
+                document.body.style.backgroundColor = document.body.style.backgroundColor === 'lightblue' ? 'green' : 'lightblue'; 
+            }
+
+            function validateText(){
+                let input = document.getElementById('textinput').value;
+                let validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                if(validation.test(input)){
+                    alert("Nope. No special characters allowed.");
+                }
+            }
+
+            function addText(){
+                let header = document.getElementById('header');
+                header.innerHTML += " Add Text";
+            }
+        </script>
+    </body>
+</html>
